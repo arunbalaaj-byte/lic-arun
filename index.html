@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arun — LIC இன்சூரன்ஸ் அட்வைசர் | உங்கள் குடும்பத்தின் நிதி பாதுகாப்பு</title>
+<meta name="description" content="LIC-உடன் உங்கள் குழந்தையின் எதிர்காலத்தையும், குடும்பத்தின் பாதுகாப்பையும் இன்றே திட்டமிடுங்கள். இலவச நிதி ஆலோசனைக்கு WhatsApp செய்யுங்கள்.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@500;700;800;900&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@500;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{
+    --blue:#1D4E9E;
+    --blue-deep:#0B2545;
+    --gold:#FBC707;
+    --gold-soft:#FFE180;
+    --ink:#10233F;
+    --paper:#F7F9FC;
+    --slate:#5B6B82;
+    --green:#1F9D55;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter','Noto Sans Tamil',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    transition:background .4s ease, color .4s ease;
+  }
+  .font-display{font-family:'Catamaran','Noto Sans Tamil',sans-serif;}
+
+  body.dark{
+    --ink:#EDF2FA;
+    --paper:#081226;
+    --slate:#9FB0C7;
+    background:var(--paper);
+  }
+
+  /* Animated blue-gold mesh */
+  .mesh-bg{
+    position:absolute; inset:0; overflow:hidden; z-index:0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(251,199,7,.35), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(29,78,158,.55), transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(251,199,7,.18), transparent 50%),
+      linear-gradient(135deg, var(--blue-deep), var(--blue) 60%, #143a78);
+    background-size:220% 220%;
+    animation:meshMove 16s ease-in-out infinite;
+  }
+  @keyframes meshMove{
+    0%{background-position:0% 0%;}
+    50%{background-position:100% 60%;}
+    100%{background-position:0% 0%;}
+  }
+  body.dark .mesh-bg{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(251,199,7,.22), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(29,78,158,.5), transparent 45%),
+      linear-gradient(135deg, #050a17, #0B2545 65%, #0e2c5c);
+    background-size:220% 220%;
+  }
+
+  .glass{
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.22);
+  }
+  .glass-card{
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(29,78,158,.10);
+  }
+  body.dark .glass-card{
+    background:rgba(16,35,63,.65);
+    border:1px solid rgba(251,199,7,.12);
+  }
+
+  .hover-lift{transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;}
+  .hover-lift:hover{transform:translateY(-8px); box-shadow:0 20px 45px -15px rgba(29,78,158,.35);}
+  .glow-border{position:relative;}
+  .glow-border::before{
+    content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;
+    background:linear-gradient(135deg, var(--gold), var(--blue), var(--gold));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude;
+    opacity:0; transition:opacity .35s ease;
+  }
+  .glow-border:hover::before{opacity:1;}
+
+  .gold-gradient-text{
+    background:linear-gradient(90deg, var(--gold), #fff6cf, var(--gold));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+
+  .growth-line{stroke-dasharray:1400; stroke-dashoffset:1400; animation:draw 2.6s ease forwards .3s;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  .fade-up{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .fade-up.in{opacity:1; transform:translateY(0);}
+
+  .wa-pulse{animation:waPulse 2.2s ease-in-out infinite;}
+  @keyframes waPulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(31,157,85,.55);}
+    50%{box-shadow:0 0 0 16px rgba(31,157,85,0);}
+  }
+
+  ::selection{background:var(--gold); color:var(--blue-deep);}
+
+  input,select,textarea{
+    background:rgba(255,255,255,.9); color:var(--blue-deep);
+  }
+  body.dark input, body.dark select, body.dark textarea{
+    background:rgba(255,255,255,.08); color:var(--ink);
+  }
+  input:focus,select:focus,textarea:focus{
+    outline:2px solid var(--gold); outline-offset:1px;
+  }
+
+  .marquee-track{animation:marquee 28s linear infinite;}
+  @keyframes marquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+  @media (prefers-reduced-motion: reduce){
+    .mesh-bg, .growth-line, .wa-pulse, .marquee-track, .fade-up{animation:none !important; transition:none !important; opacity:1 !important; transform:none !important;}
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ============ NAV ============ -->
+<nav id="mainNav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 flex items-center justify-between py-4">
+    <a href="#top" class="flex items-center gap-2 font-display font-extrabold text-lg" style="color:var(--gold);">
+      <span class="w-9 h-9 rounded-full flex items-center justify-center" style="background:var(--blue);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v6c0 5 4 8.5 9 9 5-.5 9-4 9-9V7l-9-5z" stroke="#FBC707" stroke-width="2" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="text-white">Arun <span style="color:var(--gold);">LIC</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-7 text-sm font-semibold text-white/90">
+      <a href="#why" class="hover:text-yellow-300 transition">ஏன் LIC?</a>
+      <a href="#calc" class="hover:text-yellow-300 transition">கால்குலேட்டர்</a>
+      <a href="#testimonials" class="hover:text-yellow-300 transition">Reviews</a>
+      <a href="#faq" class="hover:text-yellow-300 transition">FAQ</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <button id="themeToggle" aria-label="Toggle dark mode" class="w-9 h-9 rounded-full glass flex items-center justify-center text-white">
+        <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <a href="#lead-form" class="hidden sm:inline-flex px-4 py-2 rounded-full text-sm font-bold hover-lift" style="background:var(--gold); color:var(--blue-deep);">இலவச திட்டம்</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header id="top" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+  <div class="mesh-bg"></div>
+  <div class="relative z-10 max-w-6xl mx-auto px-5 md:px-8 grid md:grid-cols-2 gap-10 items-center">
+    <div class="fade-up">
+      <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-wide glass text-white mb-6">🏆 20+ ஆண்டுகள் நம்பிக்கை · Govt-backed LIC of India</span>
+      <h1 class="font-display font-black text-white text-4xl md:text-5xl lg:text-6xl leading-tight mb-5">
+        இன்று சேமித்தால்<span class="gold-gradient-text">...</span><br>நாளை உங்கள் குழந்தைக்கு <span class="gold-gradient-text">₹1 கோடி.</span>
+      </h1>
+      <p class="text-white/85 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
+        LIC என்பது Insurance மட்டும் அல்ல. அது உங்கள் குடும்பத்தின் பாதுகாப்பும், உங்கள் குழந்தையின் எதிர்கால முதலீடும்.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#lead-form" class="px-7 py-3.5 rounded-full font-bold hover-lift" style="background:var(--gold); color:var(--blue-deep); box-shadow:0 10px 30px -8px rgba(251,199,7,.6);">Get Free Financial Plan</a>
+        <a id="heroWaBtn" href="#" target="_blank" class="px-7 py-3.5 rounded-full font-bold text-white glass hover-lift flex items-center gap-2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.63 1.42 5.14L2 22l5.13-1.5a9.87 9.87 0 004.9 1.3h.01c5.46 0 9.9-4.45 9.9-9.91C21.94 6.45 17.5 2 12.04 2zm5.86 14.06c-.25.7-1.45 1.33-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-1-.32-1.7-.63-3-1.3-4.95-4.34-5.1-4.55-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.43-.07.68.52.25.6.85 2.06.93 2.21.08.15.13.33.02.53-.1.2-.15.33-.3.5-.15.18-.31.4-.45.54-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.06 1.13 1.01 2.09 1.32 2.38 1.47.3.15.47.13.64-.08.17-.2.73-.85.93-1.14.2-.3.4-.24.66-.15.27.1 1.72.81 2.01.96.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>
+          WhatsApp Me
+        </a>
+      </div>
+    </div>
+
+    <div class="fade-up glass rounded-3xl p-6 md:p-8" style="animation-delay:.15s;">
+      <p class="text-white/70 text-xs font-semibold uppercase tracking-widest mb-2">முதலீடு எப்படி வளரும்</p>
+      <svg viewBox="0 0 400 200" class="w-full h-auto">
+        <defs>
+          <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#FBC707"/>
+            <stop offset="100%" stop-color="#FFFDF0"/>
+          </linearGradient>
+        </defs>
+        <path d="M10,180 C90,175 120,150 160,120 C210,85 250,70 300,40 C330,22 360,15 390,10" fill="none" stroke="url(#lineGrad)" stroke-width="4" stroke-linecap="round" class="growth-line"/>
+        <circle cx="390" cy="10" r="6" fill="#FBC707"/>
+      </svg>
+      <div class="grid grid-cols-4 gap-2 mt-3 text-center">
+        <div><p class="text-white font-display font-extrabold">Age 1</p><p class="text-white/60 text-[11px]">Start</p></div>
+        <div><p class="text-white font-display font-extrabold">Age 10</p><p class="text-white/60 text-[11px]">Grow</p></div>
+        <div><p class="text-white font-display font-extrabold">Age 18</p><p class="text-white/60 text-[11px]">Build</p></div>
+        <div><p class="gold-gradient-text font-display font-extrabold">₹1 Cr</p><p class="text-white/60 text-[11px]">Goal</p></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ WHY START EARLY ============ -->
+<section id="why" class="relative py-20 px-5 md:px-8" style="background:var(--paper);">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14 fade-up">
+      <p class="font-bold text-sm tracking-widest uppercase" style="color:var(--blue);">Compounding Advantage</p>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-2" style="color:var(--ink);">ஏன் இப்போதே தொடங்க வேண்டும்?</h2>
+    </div>
+
+    <div class="overflow-x-auto pb-4">
+      <div class="flex gap-4 md:gap-6 min-w-[720px] md:min-w-0 md:grid md:grid-cols-5 relative">
+        <div class="hidden md:block absolute top-8 left-0 right-0 h-1 rounded-full" style="background:linear-gradient(90deg, var(--blue), var(--gold));"></div>
+        <div class="timeline-node fade-up flex-1 text-center relative">
+          <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center font-display font-extrabold text-white relative z-10" style="background:var(--blue);">1</div>
+          <p class="mt-3 font-bold" style="color:var(--ink);">Age 1</p>
+          <p class="text-xs" style="color:var(--slate);">Starting age</p>
+        </div>
+        <div class="timeline-node fade-up flex-1 text-center relative" style="animation-delay:.1s;">
+          <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center font-display font-extrabold text-white relative z-10" style="background:var(--blue);">10</div>
+          <p class="mt-3 font-bold" style="color:var(--ink);">Age 10</p>
+          <p class="text-xs" style="color:var(--slate);">Steady growth</p>
+        </div>
+        <div class="timeline-node fade-up flex-1 text-center relative" style="animation-delay:.2s;">
+          <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center font-display font-extrabold text-white relative z-10" style="background:var(--blue);">18</div>
+          <p class="mt-3 font-bold" style="color:var(--ink);">Age 18</p>
+          <p class="text-xs" style="color:var(--slate);">Education-ready</p>
+        </div>
+        <div class="timeline-node fade-up flex-1 text-center relative" style="animation-delay:.3s;">
+          <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center font-display font-extrabold text-white relative z-10" style="background:var(--blue);">25</div>
+          <p class="mt-3 font-bold" style="color:var(--ink);">Age 25</p>
+          <p class="text-xs" style="color:var(--slate);">Independence</p>
+        </div>
+        <div class="timeline-node fade-up flex-1 text-center relative" style="animation-delay:.4s;">
+          <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center font-display font-extrabold relative z-10" style="background:var(--gold); color:var(--blue-deep); box-shadow:0 0 0 6px rgba(251,199,7,.25);">₹1Cr</div>
+          <p class="mt-3 font-bold" style="color:var(--ink);">Goal Reached</p>
+          <p class="text-xs" style="color:var(--slate);">Wealth secured</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-14">
+      <div class="glass-card rounded-2xl p-5 fade-up"><p class="text-2xl mb-2">💰</p><p class="font-bold text-sm" style="color:var(--ink);">குறைந்த மாத சேமிப்பு</p></div>
+      <div class="glass-card rounded-2xl p-5 fade-up" style="animation-delay:.1s;"><p class="text-2xl mb-2">⏳</p><p class="font-bold text-sm" style="color:var(--ink);">நீண்ட compounding காலம்</p></div>
+      <div class="glass-card rounded-2xl p-5 fade-up" style="animation-delay:.2s;"><p class="text-2xl mb-2">🪶</p><p class="font-bold text-sm" style="color:var(--ink);">குறைவான நிதி சுமை</p></div>
+      <div class="glass-card rounded-2xl p-5 fade-up" style="animation-delay:.3s;"><p class="text-2xl mb-2">📈</p><p class="font-bold text-sm" style="color:var(--ink);">சிறந்த செல்வ வளர்ச்சி</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURE CARDS ============ -->
+<section class="py-20 px-5 md:px-8" style="background:linear-gradient(180deg, var(--paper), rgba(29,78,158,.05));">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14 fade-up">
+      <p class="font-bold text-sm tracking-widest uppercase" style="color:var(--blue);">What You Get</p>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-2" style="color:var(--ink);">உங்கள் குடும்பத்திற்கான முழுமையான பாதுகாப்பு</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- card -->
+      <div class="glass-card glow-border hover-lift rounded-2xl p-7 fade-up">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-xl" style="background:linear-gradient(135deg,var(--blue),var(--gold));">🛡️</div>
+        <h3 class="font-display font-bold text-lg mb-2" style="color:var(--ink);">100% Family Protection</h3>
+        <p class="text-sm" style="color:var(--slate);">உங்கள் குடும்பத்திற்கான முழுமையான நிதி பாதுகாப்பு.</p>
+      </div>
+      <div class="glass-card glow-border hover-lift rounded-2xl p-7 fade-up" style="animation-delay:.08s;">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-xl" style="background:linear-gradient(135deg,var(--blue),var(--gold));">👶</div>
+        <h3 class="font-display font-bold text-lg mb-2" style="color:var(--ink);">Child Future Planning</h3>
+        <p class="text-sm" style="color:var(--slate);">1–4 வயதிலேயே தொடங்குவது சிறந்தது.</p>
+      </div>
+      <div class="glass-card glow-border hover-lift rounded-2xl p-7 fade-up" style="animation-delay:.16s;">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-xl" style="background:linear-gradient(135deg,var(--blue),var(--gold));">🎯</div>
+        <h3 class="font-display font-bold text-lg mb-2" style="color:var(--ink);">₹1 Crore Wealth Goal</h3>
+        <p class="text-sm" style="color:var(--slate);">நீண்ட கால சேமிப்பு வளர்ச்சி திட்டம்.</p>
+      </div>
+      <div class="glass-card glow-border hover-lift rounded-2xl p-7 fade-up" style="animation-delay:.24s;">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-xl" style="background:linear-gradient(135deg,var(--blue),var(--gold));">🏛️</div>
+        <h3 class="font-display font-bold text-lg mb-2" style="color:var(--ink);">Government Trust</h3>
+        <p class="text-sm" style="color:var(--slate);">LIC-இன் 65+ ஆண்டு பாரம்பரியம்.</p>
+      </div>
+      <div class="glass-card glow-border hover-lift rounded-2xl p-7 fade-up" style="animation-delay:.32s;">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-xl" style="background:linear-gradient(135deg,var(--blue),var(--gold));">🧾</div>
+        <h3 class="font-display font-bold text-lg mb-2" style="color:var(--ink);">Tax Benefits</h3>
+        <p class="text-sm" style="color:var(--slate);">பொருந்தக்கூடிய வரி சலுகைகள்.</p>
+      </div>
+      <div class="glass-card glow-border hover-lift rounded-2xl p-7 fade-up" style="animation-delay:.4s;">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-xl" style="background:linear-gradient(135deg,var(--blue),var(--gold));">🤝</div>
+        <h3 class="font-display font-bold text-lg mb-2" style="color:var(--ink);">Personal Advisor Support</h3>
+        <p class="text-sm" style="color:var(--slate);">தொடக்கம் முதல் இறுதி வரை உதவி.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section class="py-20 px-5 md:px-8" style="background:var(--blue-deep);">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12 fade-up">
+      <p class="font-bold text-sm tracking-widest uppercase" style="color:var(--gold);">Why LIC</p>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-2 text-white">LIC vs மற்ற நிறுவனங்கள்</h2>
+    </div>
+    <div class="glass rounded-2xl overflow-hidden fade-up">
+      <div class="grid grid-cols-2 text-center font-display font-bold text-white">
+        <div class="py-4" style="background:rgba(251,199,7,.15);">LIC</div>
+        <div class="py-4 border-l border-white/10">Other Companies</div>
+      </div>
+      <div class="grid grid-cols-2 text-center text-sm text-white/85 divide-y divide-white/10">
+        <div class="py-4 border-t border-white/10">Government-backed</div><div class="py-4 border-t border-l border-white/10">Private ownership</div>
+        <div class="py-4">High trust</div><div class="py-4 border-l border-white/10">Different risk profile</div>
+        <div class="py-4">Strong claim settlement</div><div class="py-4 border-l border-white/10">Varies by company</div>
+        <div class="py-4">Long-term stability</div><div class="py-4 border-l border-white/10">Frequent product changes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALCULATOR ============ -->
+<section id="calc" class="py-20 px-5 md:px-8" style="background:var(--paper);">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12 fade-up">
+      <p class="font-bold text-sm tracking-widest uppercase" style="color:var(--blue);">Plan Your Future</p>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-2" style="color:var(--ink);">முதலீட்டு கால்குலேட்டர்</h2>
+      <p class="text-sm mt-2" style="color:var(--slate);">தோராயமான மதிப்பீடு — உண்மையான தொகைக்கு அட்வைசரை தொடர்பு கொள்ளவும்.</p>
+    </div>
+    <div class="glass-card rounded-3xl p-6 md:p-10 fade-up">
+      <div class="grid sm:grid-cols-3 gap-5 mb-8">
+        <div>
+          <label class="text-xs font-bold uppercase tracking-wide" style="color:var(--slate);">Age</label>
+          <input id="calcAge" type="number" value="30" min="1" max="65" class="w-full mt-1.5 rounded-xl px-4 py-3 border border-black/10 font-semibold">
+        </div>
+        <div>
+          <label class="text-xs font-bold uppercase tracking-wide" style="color:var(--slate);">Monthly Investment (₹)</label>
+          <input id="calcAmount" type="number" value="3000" min="500" step="500" class="w-full mt-1.5 rounded-xl px-4 py-3 border border-black/10 font-semibold">
+        </div>
+        <div>
+          <label class="text-xs font-bold uppercase tracking-wide" style="color:var(--slate);">Years</label>
+          <input id="calcYears" type="number" value="15" min="5" max="40" class="w-full mt-1.5 rounded-xl px-4 py-3 border border-black/10 font-semibold">
+        </div>
+      </div>
+      <button id="calcBtn" class="w-full py-3.5 rounded-full font-bold hover-lift" style="background:var(--blue); color:#fff;">Calculate Estimate</button>
+
+      <div id="calcResults" class="grid sm:grid-cols-2 gap-4 mt-8 hidden">
+        <div class="rounded-2xl p-6 text-center" style="background:rgba(29,78,158,.08);">
+          <p class="text-xs font-bold uppercase tracking-wide mb-1" style="color:var(--slate);">Estimated Maturity</p>
+          <p id="resMaturity" class="font-display font-extrabold text-2xl md:text-3xl" style="color:var(--blue);">₹0</p>
+        </div>
+        <div class="rounded-2xl p-6 text-center" style="background:rgba(251,199,7,.14);">
+          <p class="text-xs font-bold uppercase tracking-wide mb-1" style="color:var(--slate);">Potential Insurance Cover</p>
+          <p id="resCover" class="font-display font-extrabold text-2xl md:text-3xl" style="color:var(--blue-deep);">₹0</p>
+        </div>
+        <div class="sm:col-span-2">
+          <div class="h-3 rounded-full bg-black/5 overflow-hidden">
+            <div id="goalBar" class="h-full rounded-full" style="width:0%; background:linear-gradient(90deg,var(--blue),var(--gold)); transition:width 1.2s ease;"></div>
+          </div>
+          <p id="goalLabel" class="text-xs mt-2 text-center font-semibold" style="color:var(--slate);">₹1 கோடி இலக்கின் 0%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COUNTERS ============ -->
+<section class="py-16 px-5 md:px-8" style="background:var(--blue);">
+  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div class="fade-up"><p class="counter font-display font-black text-3xl md:text-4xl text-white" data-target="20">0</p><p class="text-white/80 text-xs md:text-sm font-semibold mt-1">+ Years Trust</p></div>
+    <div class="fade-up" style="animation-delay:.1s;"><p class="counter font-display font-black text-3xl md:text-4xl" style="color:var(--gold);" data-target="1000">0</p><p class="text-white/80 text-xs md:text-sm font-semibold mt-1">+ Happy Families</p></div>
+    <div class="fade-up" style="animation-delay:.2s;"><p class="counter font-display font-black text-3xl md:text-4xl text-white" data-target="10">0</p><p class="text-white/80 text-xs md:text-sm font-semibold mt-1">Cr+ Sum Assured</p></div>
+    <div class="fade-up" style="animation-delay:.3s;"><p class="font-display font-black text-3xl md:text-4xl" style="color:var(--gold);">24×7</p><p class="text-white/80 text-xs md:text-sm font-semibold mt-1">Support</p></div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="testimonials" class="py-20 px-5 md:px-8" style="background:var(--paper);">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 fade-up">
+      <p class="font-bold text-sm tracking-widest uppercase" style="color:var(--blue);">Client Stories</p>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-2" style="color:var(--ink);">எங்கள் வாடிக்கையாளர்கள் சொல்வது</h2>
+    </div>
+    <div class="relative overflow-hidden">
+      <div id="testiTrack" class="flex gap-6 transition-transform duration-500 ease-out">
+        <div class="glass-card rounded-2xl p-7 min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)]">
+          <p class="text-yellow-500 mb-3">★★★★★</p>
+          <p class="text-sm mb-4" style="color:var(--ink);">"என் மகளுக்காக 2 வயதிலேயே Arun அண்ணா plan போட்டு தந்தாங்க. இப்போ மனசுக்கு நிம்மதி."</p>
+          <p class="font-bold text-sm" style="color:var(--blue);">— செல்வி, மதுரை</p>
+        </div>
+        <div class="glass-card rounded-2xl p-7 min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)]">
+          <p class="text-yellow-500 mb-3">★★★★★</p>
+          <p class="text-sm mb-4" style="color:var(--ink);">"Claim process ரொம்ப easy ஆ இருந்துச்சு, Arun அண்ணா முழுவதும் help பண்ணாங்க."</p>
+          <p class="font-bold text-sm" style="color:var(--blue);">— முரளி, திருச்சி</p>
+        </div>
+        <div class="glass-card rounded-2xl p-7 min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)]">
+          <p class="text-yellow-500 mb-3">★★★★★</p>
+          <p class="text-sm mb-4" style="color:var(--ink);">"மாத சேமிப்பு budget-க்குள்ளயே நல்ல policy suggest பண்ணாங்க. Highly recommended!"</p>
+          <p class="font-bold text-sm" style="color:var(--blue);">— பிரியா, சேலம்</p>
+        </div>
+      </div>
+      <div class="flex justify-center gap-2 mt-6" id="testiDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-20 px-5 md:px-8" style="background:linear-gradient(180deg, var(--paper), rgba(29,78,158,.05));">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12 fade-up">
+      <p class="font-bold text-sm tracking-widest uppercase" style="color:var(--blue);">Questions</p>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-2" style="color:var(--ink);">அடிக்கடி கேட்கப்படும் கேள்விகள்</h2>
+    </div>
+    <div class="space-y-3" id="faqList">
+      <div class="glass-card rounded-2xl overflow-hidden fade-up">
+        <button class="faq-q w-full text-left px-6 py-5 font-bold flex justify-between items-center" style="color:var(--ink);">Why LIC?<span class="faq-icon transition-transform">+</span></button>
+        <div class="faq-a px-6 pb-5 text-sm" style="color:var(--slate); display:none;">LIC அரசு நிறுவனம், 65+ ஆண்டு trust மற்றும் strong claim settlement record உடையது.</div>
+      </div>
+      <div class="glass-card rounded-2xl overflow-hidden fade-up">
+        <button class="faq-q w-full text-left px-6 py-5 font-bold flex justify-between items-center" style="color:var(--ink);">How much should I invest?<span class="faq-icon transition-transform">+</span></button>
+        <div class="faq-a px-6 pb-5 text-sm" style="color:var(--slate); display:none;">உங்கள் income மற்றும் goal-ஐ பொருத்து ₹1,000 முதல் ஆரம்பிக்கலாம். Calculator-ஐ பயன்படுத்தி பாருங்கள்.</div>
+      </div>
+      <div class="glass-card rounded-2xl overflow-hidden fade-up">
+        <button class="faq-q w-full text-left px-6 py-5 font-bold flex justify-between items-center" style="color:var(--ink);">Can I start for my child?<span class="faq-icon transition-transform">+</span></button>
+        <div class="faq-a px-6 pb-5 text-sm" style="color:var(--slate); display:none;">ஆம், 1 வயதிலிருந்தே child plans தொடங்கலாம் — early start-ஆல் compounding advantage அதிகம்.</div>
+      </div>
+      <div class="glass-card rounded-2xl overflow-hidden fade-up">
+        <button class="faq-q w-full text-left px-6 py-5 font-bold flex justify-between items-center" style="color:var(--ink);">Monthly payment available?<span class="faq-icon transition-transform">+</span></button>
+        <div class="faq-a px-6 pb-5 text-sm" style="color:var(--slate); display:none;">ஆம், Monthly, Quarterly, Half-yearly, Yearly — நான்கு options-லும் pay செய்யலாம்.</div>
+      </div>
+      <div class="glass-card rounded-2xl overflow-hidden fade-up">
+        <button class="faq-q w-full text-left px-6 py-5 font-bold flex justify-between items-center" style="color:var(--ink);">Claim process?<span class="faq-icon transition-transform">+</span></button>
+        <div class="faq-a px-6 pb-5 text-sm" style="color:var(--slate); display:none;">அட்வைசராக நான் ஆவணங்கள் தொடங்கி claim approval வரை முழுவதும் support செய்வேன்.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEAD FORM ============ -->
+<section id="lead-form" class="py-20 px-5 md:px-8 relative overflow-hidden">
+  <div class="mesh-bg"></div>
+  <div class="relative z-10 max-w-2xl mx-auto">
+    <div class="text-center mb-10 fade-up">
+      <p class="font-bold text-sm tracking-widest uppercase" style="color:var(--gold);">Free Consultation</p>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-2 text-white">உங்கள் இலவச நிதி திட்டத்தை பெறுங்கள்</h2>
+    </div>
+
+    <form id="leadForm" class="glass rounded-3xl p-6 md:p-10 space-y-5 fade-up">
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label for="f_name" class="text-xs font-bold uppercase tracking-wide text-white/80">Full Name *</label>
+          <input id="f_name" name="name" type="text" required class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+        </div>
+        <div>
+          <label for="f_mobile" class="text-xs font-bold uppercase tracking-wide text-white/80">WhatsApp Number *</label>
+          <input id="f_mobile" name="mobile" type="tel" pattern="[0-9]{10}" required placeholder="9876543210" class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label for="f_email" class="text-xs font-bold uppercase tracking-wide text-white/80">Email (Optional)</label>
+          <input id="f_email" name="email" type="email" class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+        </div>
+        <div>
+          <label for="f_age" class="text-xs font-bold uppercase tracking-wide text-white/80">Age *</label>
+          <input id="f_age" name="age" type="number" min="1" max="80" required class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label for="f_occupation" class="text-xs font-bold uppercase tracking-wide text-white/80">Occupation</label>
+          <input id="f_occupation" name="occupation" type="text" class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+        </div>
+        <div>
+          <label for="f_income" class="text-xs font-bold uppercase tracking-wide text-white/80">Monthly Income</label>
+          <select id="f_income" name="income" class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+            <option>Below ₹20,000</option>
+            <option>₹20,000 – ₹50,000</option>
+            <option>₹50,000 – ₹1,00,000</option>
+            <option>Above ₹1,00,000</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-5">
+        <div>
+          <label for="f_married" class="text-xs font-bold uppercase tracking-wide text-white/80">Married</label>
+          <select id="f_married" name="married" class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+            <option>Yes</option><option>No</option>
+          </select>
+        </div>
+        <div>
+          <label for="f_children" class="text-xs font-bold uppercase tracking-wide text-white/80">No. of Children</label>
+          <input id="f_children" name="children" type="number" min="0" max="10" value="0" class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+        </div>
+        <div>
+          <label for="f_childage" class="text-xs font-bold uppercase tracking-wide text-white/80">Youngest Child Age</label>
+          <input id="f_childage" name="childAge" type="number" min="0" max="25" class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label for="f_plan" class="text-xs font-bold uppercase tracking-wide text-white/80">Interested Plan</label>
+          <select id="f_plan" name="plan" class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+            <option>Child Future Plan</option>
+            <option>Family Protection Plan</option>
+            <option>Wealth / Savings Plan</option>
+            <option>Retirement Plan</option>
+            <option>Not Sure — Need Advice</option>
+          </select>
+        </div>
+        <div>
+          <label for="f_budget" class="text-xs font-bold uppercase tracking-wide text-white/80">Monthly Investment Budget</label>
+          <select id="f_budget" name="budget" class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+            <option>₹1,000 – ₹3,000</option>
+            <option>₹3,000 – ₹5,000</option>
+            <option>₹5,000 – ₹10,000</option>
+            <option>Above ₹10,000</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label for="f_time" class="text-xs font-bold uppercase tracking-wide text-white/80">Preferred Contact Time</label>
+        <select id="f_time" name="contactTime" class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold">
+          <option>Morning (9AM–12PM)</option>
+          <option>Afternoon (12PM–4PM)</option>
+          <option>Evening (4PM–8PM)</option>
+        </select>
+      </div>
+      <div>
+        <label for="f_message" class="text-xs font-bold uppercase tracking-wide text-white/80">Additional Message</label>
+        <textarea id="f_message" name="message" rows="3" class="w-full mt-1.5 rounded-xl px-4 py-3 font-semibold"></textarea>
+      </div>
+
+      <button id="submitBtn" type="submit" class="w-full py-4 rounded-full font-bold text-lg hover-lift flex items-center justify-center gap-2" style="background:var(--gold); color:var(--blue-deep);">
+        <span id="submitText">Submit &amp; Talk on WhatsApp</span>
+        <svg id="submitSpinner" class="hidden animate-spin" width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity=".25"/><path d="M22 12a10 10 0 00-10-10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      </button>
+      <p id="formNote" class="text-center text-white/70 text-xs">சமர்ப்பித்தவுடன் WhatsApp-ல் நேரடியாக இணைக்கப்படுவீர்கள்.</p>
+    </form>
+
+    <div id="successMsg" class="hidden glass rounded-3xl p-10 text-center fade-up">
+      <p class="text-5xl mb-4">✅</p>
+      <p class="font-display font-bold text-xl text-white mb-2">நன்றி! உங்கள் விவரங்கள் பெறப்பட்டது.</p>
+      <p class="text-white/75 text-sm">3 வினாடிகளில் WhatsApp-க்கு திருப்பி விடப்படுவீர்கள்...</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="py-20 px-5 md:px-8 text-center" style="background:var(--blue-deep);">
+  <div class="max-w-2xl mx-auto fade-up">
+    <h2 class="font-display font-extrabold text-3xl md:text-4xl text-white mb-4">இன்றே உங்கள் குடும்பத்தின் எதிர்காலத்தை பாதுகாத்திடுங்கள்.</h2>
+    <div class="flex flex-wrap justify-center gap-4 mt-8">
+      <a href="#lead-form" class="px-6 py-3.5 rounded-full font-bold hover-lift" style="background:var(--gold); color:var(--blue-deep);">Book Free Consultation</a>
+      <a id="ctaWaBtn" href="#" target="_blank" class="px-6 py-3.5 rounded-full font-bold text-white glass hover-lift">WhatsApp Now</a>
+      <a id="ctaCallBtn" href="#" class="px-6 py-3.5 rounded-full font-bold text-white glass hover-lift">Call Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="py-14 px-5 md:px-8" style="background:#061225;">
+  <div class="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm text-white/70">
+    <div>
+      <p class="font-display font-bold text-lg text-white mb-2">Arun <span style="color:var(--gold);">LIC</span></p>
+      <p>LIC Insurance Advisor</p>
+      <p class="mt-2">License No: XXXXXXXXX</p>
+    </div>
+    <div>
+      <p class="font-bold text-white mb-2">Contact</p>
+      <p>📞 <a href="tel:+918940000198" class="hover:text-yellow-300">+91 89400 00198</a></p>
+      <p>💬 <a id="footerWaLink" href="#" target="_blank" class="hover:text-yellow-300">WhatsApp</a></p>
+      <p>✉️ arun.lic@example.com</p>
+    </div>
+    <div>
+      <p class="font-bold text-white mb-2">Social</p>
+      <p><a href="#" class="hover:text-yellow-300">Instagram</a></p>
+      <p><a href="#" class="hover:text-yellow-300">Facebook</a></p>
+    </div>
+    <div>
+      <p class="font-bold text-white mb-2">Location</p>
+      <p>Tamil Nadu, India</p>
+    </div>
+  </div>
+  <p class="text-center text-white/40 text-xs mt-10">© 2026 Arun LIC Advisor. All rights reserved.</p>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a id="floatWa" href="#" target="_blank" class="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full flex items-center justify-center wa-pulse hover-lift" style="background:#1F9D55;" aria-label="Chat on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.63 1.42 5.14L2 22l5.13-1.5a9.87 9.87 0 004.9 1.3h.01c5.46 0 9.9-4.45 9.9-9.91C21.94 6.45 17.5 2 12.04 2zm5.86 14.06c-.25.7-1.45 1.33-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-1-.32-1.7-.63-3-1.3-4.95-4.34-5.1-4.55-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.43-.07.68.52.25.6.85 2.06.93 2.21.08.15.13.33.02.53-.1.2-.15.33-.3.5-.15.18-.31.4-.45.54-.15.15-.3.31-.13.6.17.3.77 1.27 1.65 2.06 1.13 1.01 2.09 1.32 2.38 1.47.3.15.47.13.64-.08.17-.2.73-.85.93-1.14.2-.3.4-.24.66-.15.27.1 1.72.81 2.01.96.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>
+</a>
+
+<script>
+/* ===================== CONFIG — EDIT THESE ===================== */
+const CONFIG = {
+  whatsappNumber: "918940000198", // country code + number, no + or spaces
+  whatsappDefaultMsg: "Hi Arun, I am interested in LIC planning",
+  googleScriptUrl: "https://script.google.com/u/0/home/projects/1OZzyLONhuKbOyqCJZQWPubAmpd-iHWUgvtgB9dNUZ_KEQtUOQ-F1nFKi/edit",
+  phoneDisplay: "+91 89400 00198"
+};
+/* ================================================================= */
+
+const waLink = (msg) => `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+document.getElementById('heroWaBtn').href = waLink(CONFIG.whatsappDefaultMsg);
+document.getElementById('ctaWaBtn').href = waLink(CONFIG.whatsappDefaultMsg);
+document.getElementById('floatWa').href = waLink(CONFIG.whatsappDefaultMsg);
+document.getElementById('ctaCallBtn').href = `tel:+${CONFIG.whatsappNumber}`;
+document.getElementById('footerWaLink').href = waLink(CONFIG.whatsappDefaultMsg);
+
+/* Nav background on scroll */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 40 ? 'rgba(11,37,69,.85)' : 'transparent';
+  nav.style.backdropFilter = window.scrollY > 40 ? 'blur(14px)' : 'none';
+});
+
+/* Dark mode toggle */
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => document.body.classList.toggle('dark'));
+
+/* Fade-up on scroll */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+/* Counters */
+const counters = document.querySelectorAll('.counter');
+const counterIO = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = +el.dataset.target;
+      let cur = 0;
+      const step = Math.max(1, Math.ceil(target / 60));
+      const tick = () => {
+        cur += step;
+        if (cur >= target) { el.textContent = target; return; }
+        el.textContent = cur;
+        requestAnimationFrame(tick);
+      };
+      tick();
+      counterIO.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterIO.observe(c));
+
+/* Investment Calculator */
+document.getElementById('calcBtn').addEventListener('click', () => {
+  const amount = +document.getElementById('calcAmount').value || 0;
+  const years = +document.getElementById('calcYears').value || 0;
+  const annualRate = 0.08; // illustrative estimate only
+  const months = years * 12;
+  const monthlyRate = annualRate / 12;
+  let maturity = 0;
+  if (monthlyRate > 0) {
+    maturity = amount * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+  } else {
+    maturity = amount * months;
+  }
+  const cover = amount * 12 * years * 3; // illustrative sum-assured multiplier
+
+  document.getElementById('resMaturity').textContent = '₹' + Math.round(maturity).toLocaleString('en-IN');
+  document.getElementById('resCover').textContent = '₹' + Math.round(cover).toLocaleString('en-IN');
+  document.getElementById('calcResults').classList.remove('hidden');
+
+  const pct = Math.min(100, (maturity / 10000000) * 100);
+  document.getElementById('goalBar').style.width = pct + '%';
+  document.getElementById('goalLabel').textContent = `₹1 கோடி இலக்கின் ${pct.toFixed(1)}%`;
+});
+
+/* Testimonials slider */
+const track = document.getElementById('testiTrack');
+const slides = track.children.length;
+const dotsWrap = document.getElementById('testiDots');
+let currentSlide = 0;
+let perView = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1;
+const maxSlide = Math.max(0, slides - perView);
+for (let i = 0; i <= maxSlide; i++) {
+  const dot = document.createElement('button');
+  dot.className = 'w-2.5 h-2.5 rounded-full';
+  dot.style.background = i === 0 ? 'var(--blue)' : 'rgba(29,78,158,.25)';
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsWrap.appendChild(dot);
+}
+function goToSlide(i) {
+  currentSlide = i;
+  const slideWidth = track.children[0].getBoundingClientRect().width + 24;
+  track.style.transform = `translateX(-${i * slideWidth}px)`;
+  [...dotsWrap.children].forEach((d, idx) => d.style.background = idx === i ? 'var(--blue)' : 'rgba(29,78,158,.25)');
+}
+setInterval(() => {
+  currentSlide = currentSlide >= maxSlide ? 0 : currentSlide + 1;
+  goToSlide(currentSlide);
+}, 4500);
+
+/* FAQ accordion */
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const answer = btn.nextElementSibling;
+    const icon = btn.querySelector('.faq-icon');
+    const open = answer.style.display === 'block';
+    document.querySelectorAll('.faq-a').forEach(a => a.style.display = 'none');
+    document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+    if (!open) { answer.style.display = 'block'; icon.style.transform = 'rotate(45deg)'; }
+  });
+});
+
+/* Lead form submit -> Google Sheets + WhatsApp redirect */
+const form = document.getElementById('leadForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const submitBtn = document.getElementById('submitBtn');
+  const submitText = document.getElementById('submitText');
+  const spinner = document.getElementById('submitSpinner');
+
+  const mobile = document.getElementById('f_mobile').value.trim();
+  if (!/^[0-9]{10}$/.test(mobile)) {
+    alert('சரியான 10 இலக்க WhatsApp Number-ஐ உள்ளிடவும்.');
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitText.textContent = 'Submitting...';
+  spinner.classList.remove('hidden');
+
+  const data = {
+    name: document.getElementById('f_name').value.trim(),
+    mobile,
+    whatsapp: mobile,
+    age: document.getElementById('f_age').value,
+    occupation: document.getElementById('f_occupation').value.trim(),
+    income: document.getElementById('f_income').value,
+    married: document.getElementById('f_married').value,
+    children: document.getElementById('f_children').value,
+    childAge: document.getElementById('f_childage').value,
+    plan: document.getElementById('f_plan').value,
+    budget: document.getElementById('f_budget').value,
+    contactTime: document.getElementById('f_time').value,
+    message: document.getElementById('f_message').value.trim(),
+    email: document.getElementById('f_email').value.trim(),
+    source: 'Website',
+    status: 'New'
+  };
+
+  try {
+    if (CONFIG.googleScriptUrl && !CONFIG.googleScriptUrl.startsWith('PASTE_')) {
+      await fetch(CONFIG.googleScriptUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    }
+  } catch (err) {
+    console.warn('Sheet save failed, continuing anyway:', err);
+  }
+
+  form.classList.add('hidden');
+  document.getElementById('successMsg').classList.remove('hidden');
+
+  const waMsg = `Hi Arun, I am interested in LIC planning.\nName: ${data.name}\nAge: ${data.age}\nPlan: ${data.plan}\nBudget: ${data.budget}`;
+  setTimeout(() => {
+    window.open(waLink(waMsg), '_blank');
+  }, 3000);
+});
+</script>
+</body>
+</html>
